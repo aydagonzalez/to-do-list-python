@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>To-Do List</h1>
+
+<hr>
+{% for todo in todos %}
+<div>
+<p>
+    Items {{ todo.item }}
+
+</p>
+
+
+</div>
+
+
+{% endfor %}
+HELLO
+
+{% for todo in todos %}
+  <div class="card">
+
+    <div class="card-content">
+      <span class="card-title">{{ todo.item }}</span>
+      <p>Size: {{ todo.subitem }}</p>
+      <p>Description: {{ todo.date }}</p>
+      <p>Description: {{ todo.created }}</p>
+      <img src="{{ todo.image_url}}" alt="" class="detail-image">
+    
+    </div>
+  </div>
+{% endfor %}
+
+
+{% endblock %}
