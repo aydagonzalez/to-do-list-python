@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Todo
+from django.views.generic import ListView
+
+class ToDoList(ListView):
+    model = Todo
 
 # Define the home view
 def home(request):
@@ -13,3 +18,6 @@ def todo_index(request):
     }
 )
 
+class TodoCreate(CreateView):
+    model = Todo
+    fields = '__all__'
