@@ -6,9 +6,9 @@
 <hr>
 {% for todo in todos %}
 <div>
-<p>
+  <p>
     Items {{ todo.item }}
-</p>
+  </p>
 </div>
 
 
@@ -16,21 +16,39 @@
 HELLO
 
 {% for todo in todos %}
-  <div class="card">
+<div class="card">
 
-    <div class="card-content">
-      <span class="card-title">{{ todo.item }}</span>
-      <p>Size: {{ todo.subitem }}</p>
-      <p>Description: {{ todo.date }}</p>
-      <p>Description: {{ todo.created }}</p>
-      <img src="{{ todo.image_url}}" alt="" class="detail-image">
-    
-    </div>
-    <div class="card-action">
-      <a href="{% url 'todo_update' todo.id %}">Edit</a>
-      <a href="{% url 'todo_delete' todo.id %}">Delete</a>
-    </div>
+  <div class="card-content">
+    <span class="card-title">{{ todo.item }}</span>
+    <p>Size: {{ todo.subitem }}</p>
+    <p>Description: {{ todo.date }}</p>
+    <p>Description: {{ todo.created }}</p>
+    <img src="{{ todo.image_url}}" alt="" class="detail-image">
+
   </div>
+  <div class="card-action">
+    <!-- <a href="{% url 'todo_update' todo.id %}">Edit</a> -->
+    <!-- <a href="{% url 'todo_delete' todo.id %}">Delete</a> -->
+
+    <!-- <h1>Update Todo</h1> -->
+
+    <form action="{% url 'todo_update' todo.id  %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="update">
+   </form>
+
+    <form action="{% url 'todo_delete' todo.id  %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Delete!" class="btn">
+      <!-- <a href="{% url 'todo_delete' todo.id  %}">Del</a> -->
+    </form>
+
+
+
+
+  </div>
+</div>
 {% endfor %}
 
 
