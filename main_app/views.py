@@ -21,3 +21,7 @@ def todo_index(request):
 class TodoCreate(CreateView):
     model = Todo
     fields = '__all__'
+
+
+class TodoUpdate(CreateView):
+    pass
