@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Todo
 from django.views.generic import ListView
 
@@ -23,5 +23,10 @@ class TodoCreate(CreateView):
     fields = '__all__'
 
 
-class TodoUpdate(CreateView):
-    pass
+class TodoUpdate(UpdateView):
+    model = Todo
+    fields = '__all__'
+
+class TodoDelete(DeleteView):
+    model = Todo
+    success_url = '/'
