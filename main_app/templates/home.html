@@ -3,17 +3,17 @@
 
 <h1>To-Do List</h1>
 
-<hr>
-{% for todo in todos %}
-<div>
-  <p>
-    Items {{ todo.item }}
-  </p>
-</div>
 
-
-{% endfor %}
-HELLO
+<h1>Add To Do</h1>
+<!-- Leaving the action empty makes the form post to the same url used to display it -->
+<form action="{% url 'todo_create'  %}" method="POST">
+  {% csrf_token %}
+  <table>
+    <!-- Render the inputs inside of <tr>s & <td>s -->
+    {{ todo_create_form.as_p }}
+  </table>
+  <input type="submit" value="Submit!" class="btn">
+</form>
 
 {% for todo in todos %}
 <div class="card">
@@ -22,8 +22,9 @@ HELLO
     <span class="card-title">{{ todo.item }}</span>
     <p>Size: {{ todo.subitem }}</p>
     <p>Description: {{ todo.date }}</p>
-    <p>Description: {{ todo.created }}</p>
-    <img src="{{ todo.image_url}}" alt="" class="detail-image">
+    <p>Description: {{ todo.created }}</p>         
+    
+
 
   </div>
   <div class="card-action">
