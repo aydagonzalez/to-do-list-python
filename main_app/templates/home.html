@@ -20,24 +20,46 @@
 
   <div class="card-content">
     <span class="card-title">{{ todo.item }}</span>
-    <p>Size: {{ todo.subitem }}</p>
-    <p>Description: {{ todo.date }}</p>
-    <p>Description: {{ todo.created }}</p>         
+    <p>task: {{ todo.subitem }}</p>
+    <p>date: {{ todo.date }}</p>
+    <p>date created: {{ todo.created }}</p>         
     
 
 
   </div>
+  {{ todo_subitems }}
+  {{ todo_subitems.task_subitem }}
+  {{ todo_subitems.created }}
+
   <div class="card-action">
     <!-- <a href="{% url 'todo_update' todo.id %}">Edit</a> -->
     <!-- <a href="{% url 'todo_delete' todo.id %}">Delete</a> -->
 
     <!-- <h1>Update Todo</h1> -->
 
-    <form action="{% url 'todo_update' todo.id  %}" method="post">
+    <!-- <form action="{% url 'todo_update' todo.id  %}" method="POST">
       {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="update">
-   </form>
+      {{ form }}
+      <input type="submit" value="update!">
+   </form> -->
+<!-- 
+    <form action="{% url 'todo_update' todo.id  %}" method="POST">
+      {% csrf_token %}
+      {{ form_update }}
+      <input type="submit" value="update!"
+      >
+
+   </form> -->
+
+   <form action="{% url 'todo_subitem_create'  %}" method="POST">
+    {% csrf_token %}
+    <table>
+      {{ todo_sub_item_create_form.as_p }}
+    </table>
+    <input type="submit" value="Submit subitem!" class="btn">
+  </form>
+
+   
 
     <form action="{% url 'todo_delete' todo.id  %}" method="POST">
       {% csrf_token %}
